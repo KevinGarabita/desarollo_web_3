@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from pymongo import MongoClient
 
+
+
 app = FastAPI()
+Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
 # Mongo DB connection
 mongo_client = MongoClient("mongodb://admin_user:web3@mongo_container:27017/")
